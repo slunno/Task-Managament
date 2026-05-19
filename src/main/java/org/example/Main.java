@@ -12,7 +12,7 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static  void main() {
+    static  void main() {
 
         // Criação de listas para armazenar as tarefas, tarefas encerradas e outras informações relevantes.
         ArrayList<String> tarefas = new ArrayList<>();
