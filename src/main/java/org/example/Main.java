@@ -1,6 +1,6 @@
 package org.example;
 
-import org.example.armazem.XmlStorage;
+import org.example.ui.armazem.XmlStorage;
 import org.example.exception.tratamento.TratamentoDeTasks;
 import org.example.exception.tratamento.ValidationMenu;
 import org.example.menus.Menu;

@@ -1,4 +1,4 @@
-package org.example.armazem;
+package org.example.ui.armazem;
 
 import org.example.menus.serviceTasks.task.Task;
 import org.w3c.dom.Document;

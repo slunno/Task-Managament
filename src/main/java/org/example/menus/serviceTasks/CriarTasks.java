@@ -1,6 +1,6 @@
 package org.example.menus.serviceTasks;
 
-import org.example.armazem.XmlStorage;
+import org.example.ui.armazem.XmlStorage;
 import org.example.exception.mensagem.SizeIfExceptionCharacters;
 import org.example.exception.tratamento.TratamentoDeTasks;
 import org.example.menus.serviceTasks.task.Task;
