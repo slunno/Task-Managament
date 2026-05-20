@@ -1,35 +1,31 @@
 package org.example.menus.serviceTasks;
 
-import org.example.interfaces.Criar;
+import org.example.armazem.XmlStorage;
+import org.example.exception.mensagem.SizeIfExceptionCharacters;
+import org.example.exception.tratamento.TratamentoDeTasks;
+import org.example.menus.serviceTasks.task.Task;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class CriarTasks implements Criar {
+public class CriarTasks {
 
-    public void criarTask(ArrayList<String> tarefas, Scanner vs) {
-        // Método para criar uma nova tarefa, solicitando ao usuário o nome e a descrição da tarefa.
-        System.out.println("Digite o nome da tarefa:");
-        String nome = vs.nextLine();
-        System.out.println("Digite a descrição da tarefa:");
+    public void criarTask(ArrayList<Task> tarefas, Scanner vs, TratamentoDeTasks tratamento) {
+        System.out.println("Digite o nome da tarefa: (30 caracteres no máximo)");
+        String titulo = vs.nextLine();
+
+        System.out.println("Digite a descrição da tarefa: (100 caracteres no máximo)");
         String descricao = vs.nextLine();
-        salvarDados(nome, descricao, tarefas);
+
+        try {
+            tratamento.verificarTituloAndDescription(titulo, descricao);
+            tarefas.add(new Task(titulo, descricao));
+            XmlStorage.salvarAtivas("tarefas.xml", tarefas);
+        } catch (SizeIfExceptionCharacters e) {
+            System.out.println("Erro ao criar tarefa: " + e.getMessage());
+            return;
+        }
+        System.out.println("Tarefa criada com sucesso!");
         System.out.println("============================================");
     }
-
-    @Override
-    public void salvarDados(String nome, String descricao, ArrayList<String> tarefas) {
-        // Método para a salvar os dados da nova tarefa. (pode ser adaptado para salvar em um banco de dados ou arquivo)
-        System.out.println("Criando nova tarefa...");
-        System.out.println("Nome: " + nome);
-        System.out.println("Descrição: " + descricao);
-        // Adicionado a task a lista de tarefas (simulação)
-        tarefas.add(nome + ": " + descricao);
-    }
-
-
 }
-
-
-
-

@@ -1,32 +1,35 @@
 package org.example.menus.serviceTasks;
 
-import org.example.interfaces.Encerrar;
+import org.example.armazem.XmlStorage;
+import org.example.menus.serviceTasks.task.Task;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class EncerrarTasks implements Encerrar {
+public class EncerrarTasks {
 
-    @Override
-    public void encerrarTask(String nome, ArrayList<String> tarefas, ArrayList<String> endTarefas) {
-        Scanner scanner = new Scanner(System.in);
-
-        // Método para encerrar uma tarefa, solicitando ao usuário o nome da tarefa que deseja encerrar e confirmando a ação.
+    public void encerrarTask(ArrayList<Task> tarefas, ArrayList<Task> endTarefas, Scanner vs) {
         System.out.println("Confirmar o nome da tarefa que deseja encerrar:");
-        String nomeTarefa = scanner.nextLine();
+        String nomeTarefa = vs.nextLine().trim();
 
-        if (tarefas.contains(nomeTarefa)) {
-            endTarefas.add(nomeTarefa);
-            tarefas.remove(nomeTarefa);
+        Task encontrada = null;
+        for (Task tarefa : tarefas) {
+            if (tarefa.titulo().equalsIgnoreCase(nomeTarefa)) {
+                encontrada = tarefa;
+                break;
+            }
+        }
+
+        if (encontrada != null) {
+            tarefas.remove(encontrada);
+            endTarefas.add(encontrada);
+
+            XmlStorage.salvarAtivas("tarefas.xml", tarefas);
+            XmlStorage.salvarEncerradas("encerradas.xml", endTarefas);
+
             System.out.println("Tarefa '" + nomeTarefa + "' encerrada com sucesso!");
         } else {
             System.out.println("Tarefa '" + nomeTarefa + "' não encontrada.");
         }
-
-
-
     }
-
-
-
 }
