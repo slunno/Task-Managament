@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<taskManager>
+  <ativas>
+    <tarefa>
+      <titulo>teste</titulo>
+      <descricao>teste</descricao>
+    </tarefa>
+    <tarefa>
+      <titulo>Novo teste</titulo>
+      <descricao>eita bicho</descricao>
+    </tarefa>
+  </ativas>
+</taskManager>
