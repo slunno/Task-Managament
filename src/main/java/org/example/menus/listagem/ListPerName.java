@@ -31,10 +31,12 @@ public class ListPerName {
         }
 
         System.out.println("""
-                Como deseja prosseguir?
-                'Verificar' para voltar a lista geral!
-                'Menu' para voltar ao menu!
-                'Encerrar' para encerrar uma tarefa!""");
+                --------------------------------------------
+                |Como deseja prosseguir?                   | 
+                |> 'Verificar' para voltar a lista geral!  |
+                |> 'Menu' para voltar ao menu!             | 
+                |> 'Encerrar' para encerrar uma tarefa!    | 
+                --------------------------------------------""");
         String resposta = vs.nextLine();
 
         switch (resposta.toLowerCase(Locale.ROOT)) {

@@ -25,6 +25,8 @@ public class XmlStorage {
         salvarLista(caminhoArquivo, "encerradas", tarefasEncerradas);
     }
 
+
+
     private static void salvarLista(String caminhoArquivo, String tagLista, ArrayList<Task> tarefas) {
         try {
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();

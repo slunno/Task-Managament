@@ -1,7 +1,8 @@
 package org.example.menus;
 
+import org.example.menus.creationUser.Manager;
+import org.example.menus.creationUser.Users;
 import org.example.exception.tratamento.TratamentoDeTasks;
-import org.example.exception.tratamento.ValidationMenu;
 import org.example.menus.listagem.ListPerName;
 import org.example.menus.listagem.TaskEncerradas;
 import org.example.menus.listagem.TotalList;
@@ -14,12 +15,12 @@ import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Scanner;
 
-public class Menu {
+public class MenuTask {
 
     public void menu(Scanner vs, CriarTasks ct, ArrayList<Task> tarefas, TotalList tl,
                      ListPerName lpn, MensagemAuxiliar mensagem, EncerrarTasks encerrar,
                      ArrayList<Task> endTarefas, TaskEncerradas taskEncerradas,
-                     TratamentoDeTasks tratamento, ValidationMenu validationMenu) {
+                     TratamentoDeTasks tratamento, Manager manager, ArrayList<Users> usuarios) {
 
         System.out.println("Bem-vindo ao Gerenciador de Tarefas!");
         System.out.println("1. Criar nova tarefa:");
@@ -34,15 +35,13 @@ public class Menu {
             }
 
             int opcao = Integer.parseInt(opcao1);
-            validationMenu.validarResposta(opcao);
 
             switch (opcao) {
                 case 1 -> ct.criarTask(tarefas, vs, tratamento);
                 case 2 -> tiposDeListagem(vs, tarefas, tl, lpn, mensagem, encerrar, endTarefas);
                 case 3 -> taskEncerradas.mostrarTarefasEncerradas(endTarefas);
                 case 4 -> {
-                    System.out.println("Saindo...");
-                    System.exit(0);
+                    manager.createUser(vs, usuarios);
                 }
             }
         } catch (IllegalArgumentException e) {

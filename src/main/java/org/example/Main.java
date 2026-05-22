@@ -1,9 +1,11 @@
 package org.example;
 
+import org.example.menus.creationUser.Manager;
+import org.example.menus.creationUser.Users;
 import org.example.ui.armazem.XmlStorage;
 import org.example.exception.tratamento.TratamentoDeTasks;
-import org.example.exception.tratamento.ValidationMenu;
-import org.example.menus.Menu;
+import org.example.exception.tratamento.ValidarCadastro;
+import org.example.menus.MenuTask;
 import org.example.menus.listagem.ListPerName;
 import org.example.menus.listagem.TaskEncerradas;
 import org.example.menus.listagem.TotalList;
@@ -22,6 +24,7 @@ public class Main {
         //Armazem de tarefas;
         ArrayList<Task> tarefas = new ArrayList<>();
         ArrayList<Task> endTarefas = new ArrayList<>();
+        ArrayList<Users> usuarios = new ArrayList<>();
         //Entrada de dados;
         Scanner scanner = new Scanner(System.in);
         //Instâncias;
@@ -30,7 +33,8 @@ public class Main {
         MensagemAuxiliar mensagem = new MensagemAuxiliar();
         TratamentoDeTasks tratamento = new TratamentoDeTasks();
         TaskEncerradas taskEncerradas = new TaskEncerradas();
-        ValidationMenu validationMenu = new ValidationMenu();
+        ValidarCadastro validationMenu = new ValidarCadastro();
+        Manager manager = new Manager();
         //Listagens;
         ListPerName listPerName = new ListPerName();
         TotalList totalList = new TotalList();
@@ -39,8 +43,8 @@ public class Main {
         XmlStorage.carregarEncerradas("encerradas.xml", endTarefas);
 
         while (true) {
-            Menu menu = new Menu();
-            menu.menu(scanner, criarTasks, tarefas, totalList, listPerName, mensagem, encerrarTasks, endTarefas, taskEncerradas, tratamento, validationMenu);
+            MenuTask menu = new MenuTask();
+            menu.menu(scanner, criarTasks, tarefas, totalList, listPerName, mensagem, encerrarTasks, endTarefas, taskEncerradas, tratamento, manager, usuarios);
         }
     }
 }

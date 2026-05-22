@@ -11,6 +11,17 @@ import java.util.Scanner;
 public class CriarTasks {
 
     public void criarTask(ArrayList<Task> tarefas, Scanner vs, TratamentoDeTasks tratamento) {
+
+
+        if (tarefas.size() >= 5) {
+            System.out.println("Limite máximo de tarefas atingido. Não é possível criar mais tarefas.");
+            return;
+        }
+
+
+
+
+
         System.out.println("Digite o nome da tarefa: (30 caracteres no máximo)");
         String titulo = vs.nextLine();
 
